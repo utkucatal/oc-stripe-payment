@@ -1,0 +1,18 @@
+<div id="stripe-payment-wrapper" style="margin-top: 15px; max-width: 600px; width: 100%;">
+  <div id="stripe-payment-element">
+    <!-- Stripe.js mounts the Payment Element here -->
+  </div>
+  <div id="stripe-payment-errors" role="alert"
+       style="color:#fa755a; margin-top:10px; font-size:13px; min-height:18px;"></div>
+</div>
+<div class="buttons">
+  <div class="pull-right">
+    <input type="button" value="{{ button_confirm }}" id="button-confirm"
+           class="btn btn-primary" disabled="disabled"
+           data-loading-text="{{ text_loading }}" />
+  </div>
+</div>
+
+<script>
+(function(){var _k={{ publishable_key|json_encode|raw }},_s={{ client_secret|json_encode|raw }},_c={{ csrf_token|json_encode|raw }},_u={{ confirm_url|json_encode|raw }},_r={{ return_url|json_encode|raw }},_l={{ stripe_locale|json_encode|raw }},_re=false,_pr=false;function _se(m){var n=document.getElementById('stripe-payment-errors');if(n)n.textContent=m;}function _sl(v){var b=document.getElementById('button-confirm');if(!b)return;b.disabled=v||!_re;b.value=v?{{ text_loading|json_encode|raw }}:{{ button_confirm|json_encode|raw }};}function _init(){var _st=window.Stripe(_k),_el=_st.elements({clientSecret:_s,locale:_l,appearance:{theme:'stripe',variables:{colorPrimary:'#0d6efd',borderRadius:'4px',fontFamily:'"Helvetica Neue",Helvetica,Arial,sans-serif'}}});var _pe=_el.create('payment',{layout:{type:'tabs',defaultCollapsed:false}});_pe.mount('#stripe-payment-element');_pe.on('ready',function(){_re=true;var b=document.getElementById('button-confirm');if(b)b.disabled=false;});function _cc(e){e.preventDefault();e.stopImmediatePropagation();if(!_re){_se({{ error_generic|json_encode|raw }});return;}if(_pr)return;_pr=true;_se('');_sl(true);_st.confirmPayment({elements:_el,confirmParams:{return_url:_r},redirect:'if_required'}).then(function(rs){if(rs.error){_se(rs.error.message);_sl(false);_pr=false;return;}if(rs.paymentIntent&&rs.paymentIntent.id){_srv(rs.paymentIntent.id);return;}_se({{ error_generic|json_encode|raw }});_sl(false);_pr=false;});}function _srv(id){$.ajax({url:_u,type:'POST',dataType:'json',data:{payment_intent_id:id,csrf_token:_c},success:function(rs){if(rs.redirect){window.location.href=rs.redirect;}else{_se(rs.error||{{ error_payment|json_encode|raw }});_sl(false);_pr=false;}},error:function(){_se({{ error_generic|json_encode|raw }});_sl(false);_pr=false;}});}var _b=document.getElementById('button-confirm');if(_b)_b.addEventListener('click',_cc,true);}if(window.Stripe){_init();}else{var _sc=document.createElement('script');_sc.src='https://js.stripe.com/v3/';_sc.onload=_init;_sc.onerror=function(){_se({{ error_generic|json_encode|raw }});};document.head.appendChild(_sc);}})();
+</script>

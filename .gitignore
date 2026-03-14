@@ -1,20 +1,15 @@
-.htaccess
-/config.php
-admin/config.php
+# OS
+.DS_Store
+Thumbs.db
 
-!index.html
+# IDE
+.idea/
+*.iml
+.vscode/
 
-download/
-image/data/
-image/cache/
-system/cache/
-system/logs/
+# Stripe PHP SDK
+upload/system/library/stripe/vendor/
+upload/system/library/stripe/composer.lock
 
-system/storage/
-
-# vQmod log files
-vqmod/logs/*
-# vQmod cache files
-vqmod/vqcache/*
-vqmod/checked.cache
-vqmod/mods.cache
+# Build artifacts
+*.zip
