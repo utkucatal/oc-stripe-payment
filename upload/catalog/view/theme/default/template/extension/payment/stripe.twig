@@ -1,12 +1,12 @@
-<div id="stripe-payment-wrapper" style="margin-top: 15px; max-width: 600px; width: 100%;">
-  <div id="stripe-payment-element">
-    <!-- Stripe.js mounts the Payment Element here -->
-  </div>
-  <div id="stripe-payment-errors" role="alert"
-       style="color:#fa755a; margin-top:10px; font-size:13px; min-height:18px;"></div>
-</div>
 <div class="buttons">
-  <div class="pull-right">
+  <div class="pull-right" style="max-width: 600px;width: 100%;">
+    <div id="stripe-payment-wrapper" style="margin-top: 15px; margin-bottom: 15px;">
+      <div id="stripe-payment-element">
+        <!-- Stripe.js mounts the Payment Element here -->
+      </div>
+      <div id="stripe-payment-errors" role="alert"
+           style="color:#fa755a; margin-top:10px; font-size:13px; min-height:18px;"></div>
+    </div>
     <input type="button" value="{{ button_confirm }}" id="button-confirm"
            class="btn btn-primary" disabled="disabled"
            data-loading-text="{{ text_loading }}" />
