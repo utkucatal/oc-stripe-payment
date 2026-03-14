@@ -2,7 +2,7 @@
 <modification>
     <name>Stripe Payment Module</name>
     <code>stripe_payment</code>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
     <author>utkucatal</author>
     <link></link>
 </modification>
