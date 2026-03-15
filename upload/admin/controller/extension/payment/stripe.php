@@ -24,8 +24,8 @@ class ControllerExtensionPaymentStripe extends Controller {
             'heading_title', 'text_edit', 'text_enabled', 'text_disabled',
             'text_yes', 'text_no', 'text_success', 'text_home', 'text_extension',
             'entry_publishable_key', 'entry_secret_key', 'entry_webhook_secret',
-            'entry_order_status', 'entry_test_mode', 'entry_status', 'entry_sort_order',
-            'help_publishable_key', 'help_secret_key', 'help_webhook_secret',
+            'entry_order_status', 'entry_link_status', 'entry_test_mode', 'entry_status', 'entry_sort_order',
+            'help_publishable_key', 'help_secret_key', 'help_webhook_secret', 'help_link_status',
             'button_save', 'button_cancel',
         );
         foreach ($strings as $s) {
@@ -63,7 +63,7 @@ class ControllerExtensionPaymentStripe extends Controller {
         $data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
 
         // Form fields
-        $fields = array('publishable_key', 'secret_key', 'webhook_secret', 'order_status_id', 'test_mode', 'status', 'sort_order');
+        $fields = array('publishable_key', 'secret_key', 'webhook_secret', 'order_status_id', 'link_status', 'test_mode', 'status', 'sort_order');
         foreach ($fields as $field) {
             $key = 'payment_stripe_' . $field;
             if (isset($this->request->post[$key])) {

@@ -28,6 +28,7 @@ class ControllerExtensionPaymentStripe extends Controller {
         $data = array(
             'publishable_key' => $this->config->get('payment_stripe_publishable_key'),
             'client_secret'   => $intent['client_secret'],
+            'link_status'     => (int)$this->config->get('payment_stripe_link_status'),
             'csrf_token'      => $csrf_token,
             'stripe_locale'   => $stripe_locale,
             'confirm_url'     => $this->url->link('extension/payment/stripe/confirm', '', true),

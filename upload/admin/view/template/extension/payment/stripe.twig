@@ -88,6 +88,18 @@
             </div>
           </div>
 
+          <!-- Stripe Link -->
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_link_status }}</label>
+            <div class="col-sm-3">
+              <select name="payment_stripe_link_status" class="form-control">
+                <option value="1" {% if payment_stripe_link_status != '0' %}selected{% endif %}>{{ text_enabled }}</option>
+                <option value="0" {% if payment_stripe_link_status == '0' %}selected{% endif %}>{{ text_disabled }}</option>
+              </select>
+              <span class="help-block">{{ help_link_status }}</span>
+            </div>
+          </div>
+
           <!-- Test Mode -->
           <div class="form-group">
             <label class="col-sm-2 control-label">{{ entry_test_mode }}</label>
